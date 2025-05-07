@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body justify-content-center">
+                    <h2 class="card-title text-center mb-4">Add a Cadet to Your Unit</h2>
+                        <form method="post">                    
+                            {% csrf_token %}
+                            <div class="form-group text-center justify-content-center">
+                                <label for="name">Cadet Name</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="form-group text-center justify-content-center">
+                                <label for="class_year">Class Year</label>
+                                <input type="text" class="form-control" id="class_year" name="class_year" required>
+                            </div>
+                            <div class="form-group text-center justify-content-center">
+                                <label for="authos">Authos</label>
+                                <input type="text" class="form-control" id="authos" name="authos" required>
+                            </div>
+                            <div class="input-group justify-content-center">
+                                <button type="submit" class="btn btn-primary btn-block">Add Cadet</button>
+                            </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Custom CSS for field alignment */   
+    .form-group {
+        margin-bottom: 20px;
+    }
+</style>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Upcoming Shifts - S1Hub{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4 text-center">Upcoming Shifts</h1>
+
+    <div class="row">
+        {% for event in events %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">{{ event.title }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ event.date }} | {{ event.time }}</h6>
+                    <p class="card-text">{{ event.description }}</p>
+                </div>
+                <div class="card-footer bg-transparent">
+                    <a href="{{ event.link }}" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No upcoming taskings or CDO shifts to schedule at this time. Check back soon!</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

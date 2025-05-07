@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="hero text-center py-5">
+    <div class="container">
+        <h1 class="display-4">Welcome to S1Hub!</h1>
+        <p class="lead">Where you can find all your personnel needs in one place!</p>
+    </div>
+</section>
+
+{% if user.is_authenticated %}
+<section class="challenges">
+    <div class="card shadow">
+        <div class="container">
+            <h2 class="mb-4">Cadets in Your Unit</h2>
+            <div class="row">
+                {% for cadet in cadets|dictsort:"class_year" %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ cadet.name }}</h3>
+                            <a href="{% url 'cadet_detail' cadet.id %}" class="btn btn-primary">Details</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endif %}
+
+<!-- Link to Bootstrap JavaScript (optional) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<style>
+    /* Define your custom CSS here */
+    .card-body {
+        background-color: black; /* Background color with opacity */
+        text-align: center;
+        color: white;
+    }
+
+    /* Set style for the card for displaying the challenges. */
+    .card {
+        background-color: whitesmoke;
+    }
+
+    /* Set font and alignment for the header of displaying the challenges. */
+    h2 {
+        font-weight: bold;
+        font-family: harrington;
+        text-align: center;
+    }
+</style>
+{% endblock %}
